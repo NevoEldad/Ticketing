@@ -19,6 +19,7 @@ router.post(
   ],
   (req: Request, res: Response) => {
     const errors = validationResult(req);
+    console.log('HERE! BODY IS : ', errors.array());
     if (!errors.isEmpty()) {
       throw new RequestValidationError(errors.array());
     }
