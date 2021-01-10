@@ -40,6 +40,7 @@ router.post(
         id: user.id,
         email: user.email
       },
+
       'asdf'
     );
     // Store it in session object
