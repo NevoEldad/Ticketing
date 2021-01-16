@@ -7,7 +7,7 @@ import { Password } from '../services/password';
 import jwt from 'jsonwebtoken';
 const router = express.Router();
 
-router.get(
+router.post(
   '/api/users/signin',
   [
     body('email')
@@ -22,7 +22,7 @@ router.get(
   async (req: Request, res: Response) => {
     const { email, password } = req.body;
 
-    const currentUser = User.findOne({ email });
+    const currentUser = await User.findOne({ email });
     if (!currentUser) {
       throw new BadRequestError('Invalid credentials');
     }
@@ -47,7 +47,7 @@ router.get(
     );
     // Store it in session object
     req.session = {
-      jst: userJwt
+      jwt: userJwt
     };
 
     res.send('Hi There!');

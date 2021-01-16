@@ -3,7 +3,7 @@ import { Password } from '../services/password';
 
 // An interface that describes the properties
 // that are required to create a new user
-interface UserAtters {
+interface UserAttrs {
   email: string;
   password: string;
 }
@@ -11,7 +11,7 @@ interface UserAtters {
 // An interface that describes the properties
 // that a user model has
 interface UserModel extends mongoose.Model<UserDoc> {
-  build(attrs: UserAtters): UserDoc;
+  build(attrs: UserAttrs): UserDoc;
 }
 
 // An interface that describes the properties
@@ -52,7 +52,7 @@ userSchema.pre('save', async function(done) {
   done();
 });
 
-userSchema.statics.build = (attrs: UserAtters) => {
+userSchema.statics.build = (attrs: UserAttrs) => {
   return new User(attrs);
 };
 const User = mongoose.model<UserDoc, UserModel>('User', userSchema);
@@ -61,7 +61,7 @@ const User = mongoose.model<UserDoc, UserModel>('User', userSchema);
 // strict mode, will ensure that the user is indeed
 // validated as it should
 // Deprecated
-const buildUser = (atters: UserAtters) => {
+const buildUser = (atters: UserAttrs) => {
   return new User(atters);
 };
 
