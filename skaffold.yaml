@@ -16,7 +16,7 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: nevoeldad/auth
+    - image: nevoeldad/client
       context: auth
       docker:
         dockerfile: Dockerfile
