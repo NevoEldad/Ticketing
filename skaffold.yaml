@@ -17,10 +17,10 @@ build:
           - src: 'src/**/*.ts'
             dest: .
     - image: nevoeldad/client
-      context: auth
+      context: client
       docker:
         dockerfile: Dockerfile
       sync:
         manual:
-          - src: '**/*.ts'
+          - src: '**/*.js'
             dest: .
